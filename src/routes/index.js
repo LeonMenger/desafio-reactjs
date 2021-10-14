@@ -1,10 +1,14 @@
-import Home from '../pages/Home';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "../pages/Home";
 
-const appRoutes =  [
-    {
-        component: Home,
-        path: '/',
-    }
-];
+const Router = () => {
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" component={Home} exact />
+            </Switch>
+        </BrowserRouter>
+    );
+};
 
-export default appRoutes
+export default Router;
