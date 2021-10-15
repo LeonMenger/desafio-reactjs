@@ -1,0 +1,9 @@
+.summary-table td:first-child {
+    background-color: var(--secondary);
+    text-align: center;
+    width: 30%;
+}
+
+.summary-table td {
+    font-weight: bold;
+}
