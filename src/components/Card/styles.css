@@ -1,0 +1,18 @@
+.card {
+    border: 0.5px solid var(--secondary-darker);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.card-title {
+    background-color: var(--secondary);
+    font-size: 20px;
+    padding: 12px 10px;
+    margin: 0;
+}
+
+.card-container {
+    padding: 16px;
+}
