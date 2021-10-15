@@ -1,13 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto Mono", monospace, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Global variables */
+:root {
+    --primary: #007acc;
+    --secondary: #f0f0f0;
+    --secondary-dark: #dddddd;
+    --secondary-darker: #b7b7b7;
+    --secondary-darkest: #c4c4c4;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+/* Table styles */
+table {
+    border: 1px solid var(--secondary-dark);
+    border-radius: 5px;
+    border-spacing: 0;
+    font-size: 14px;
+    width: 100%;
+    overflow: hidden;
+}
+
+td {
+    border-bottom: 1px solid var(--secondary-dark);
+    padding: 11px 20px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
 }
