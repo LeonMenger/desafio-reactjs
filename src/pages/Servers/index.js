@@ -1,9 +1,12 @@
 import DefaultLayout from "../../components/DefaultLayout";
+import ServersList from "./components/ServersList";
+import ServersSummary from "./components/ServersSummary";
 
 const ServersPage = () => {
     return (
         <DefaultLayout>
-            <h2>Servers Page</h2>
+            <ServersSummary />
+            <ServersList />
         </DefaultLayout>
     );
 };
