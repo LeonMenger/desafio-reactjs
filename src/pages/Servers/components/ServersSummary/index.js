@@ -1,26 +1,30 @@
+import { useContext } from "react";
 import Card from "../../../../components/Card";
+import SummaryContext from "../../../../store/summary-context";
 import "./styles.css";
 
 const ServersSummary = () => {
+    const { selectedServers, totalMemory, totalCPU, totalDisk } = useContext(SummaryContext);
+
     return (
         <Card title="Sumário dos recursos dos servidores">
             <table className="summary-table">
                 <tbody>
                     <tr>
                         <td>Servidores Selecionados</td>
-                        <td>4 servidores selecionados</td>
+                        <td>{`${selectedServers.length} servidores selecionados`}</td>
                     </tr>
                     <tr>
                         <td>Total de Memória</td>
-                        <td>354 GB</td>
+                        <td>{`${totalMemory} GB`}</td>
                     </tr>
                     <tr>
                         <td>Total de CPUs</td>
-                        <td>75 vCPUs</td>
+                        <td>{`${totalCPU} vCPUs`}</td>
                     </tr>
                     <tr>
                         <td>Total de Discos</td>
-                        <td>3096 GB</td>
+                        <td>{`${totalDisk} GB`}</td>
                     </tr>
                 </tbody>
             </table>
