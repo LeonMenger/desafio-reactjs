@@ -6,10 +6,12 @@
     background-color: var(--secondary);
 }
 
+.list-table th,
 .list-table td {
     border-right: 1px solid var(--secondary-dark);
 }
 
+.list-table th:last-child,
 .list-table td:last-child {
     border-right: none;
 }

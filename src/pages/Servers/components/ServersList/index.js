@@ -22,12 +22,12 @@ const ServersList = () => {
             <table className="list-table">
                 <thead>
                     <tr>
-                        <td>Select</td>
-                        <td>Hostname</td>
-                        <td>Memória</td>
-                        <td>vCPUs</td>
-                        <td>Disco</td>
-                        <td>IP</td>
+                        <th>Select</th>
+                        <th>Hostname</th>
+                        <th>Memória</th>
+                        <th>vCPUs</th>
+                        <th>Disco</th>
+                        <th>IP</th>
                     </tr>
                 </thead>
                 <tbody>
