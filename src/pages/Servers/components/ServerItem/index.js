@@ -1,8 +1,21 @@
+import { useContext } from "react";
+import SummaryContext from "../../../../store/summary-context";
+
 const ServerItem = ({ server }) => {
+    const { addServer, removeServer } = useContext(SummaryContext);
+
+    const onChangeHandler = (e) => {
+        if (e.target.checked) {
+            addServer(server);
+        } else {
+            removeServer(server);
+        }
+    };
+
     return (
         <tr>
             <td>
-                <input type="checkbox" />
+                <input type="checkbox" onChange={onChangeHandler} />
             </td>
             <td>{server.hostname}</td>
             <td>{`${server.configuracao.memoryProvisioned} GB`}</td>
