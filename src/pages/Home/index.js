@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import DefaultLayout from "../../components/DefaultLayout";
+import { PATHS } from "../../routes/paths";
 
 function Home() {
     return (
@@ -11,6 +13,10 @@ function Home() {
                 da biblioteca React, contudo, se você conseguir ser fiel ao modelo do Figma isso
                 será considerado um plus.
             </p>
+
+            <Link to={PATHS.servers}>
+                <button>Ir para solução</button>
+            </Link>
         </DefaultLayout>
     );
 }
