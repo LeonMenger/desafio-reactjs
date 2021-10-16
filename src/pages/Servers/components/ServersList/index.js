@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../../../../components/Card";
 import api from "../../../../services/api";
+import ServerItem from "../ServerItem";
 import "./styles.css";
 
 const ServersList = () => {
@@ -9,7 +10,6 @@ const ServersList = () => {
     useEffect(() => {
         api.get("servers")
             .then(({ data }) => {
-                console.log(data);
                 setServers(data);
             })
             .catch((err) => {
@@ -32,16 +32,7 @@ const ServersList = () => {
                 </thead>
                 <tbody>
                     {servers?.map((server) => (
-                        <tr key={server.id_vm}>
-                            <td>
-                                <input type="checkbox" onChange={(server) => console.log(server)} />
-                            </td>
-                            <td>{server.hostname}</td>
-                            <td>{`${server.configuracao.memoryProvisioned} GB`}</td>
-                            <td>{`${server.configuracao.cpuProvisioned} vCPUs`}</td>
-                            <td>{`${server.configuracao.totalDiskGB} GB`}</td>
-                            <td>{server.ip}</td>
-                        </tr>
+                        <ServerItem key={server.id_vm} server={server} />
                     ))}
                 </tbody>
             </table>
