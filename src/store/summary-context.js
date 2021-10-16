@@ -5,8 +5,8 @@ const SummaryContext = createContext({
     totalMemory: 0,
     totalCPU: 0,
     totalDisk: 0,
-    addServer: (item) => {},
-    removeServer: (id) => {}
+    addServer: (server) => {},
+    removeServer: (server) => {}
 });
 
 export default SummaryContext;

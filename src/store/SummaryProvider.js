@@ -9,38 +9,26 @@ const initialSummaryState = {
 };
 
 const summaryReducer = (state, action) => {
+    let updatedSummary = { ...initialSummaryState };
+
     if (action.type === "ADD") {
         const server = action.payload;
-        const updatedServers = state.selectedServers.concat(server);
-        const updatedTotalMemory = state.totalMemory + server.configuracao.memoryProvisioned;
-        const updatedTotalCPU = state.totalCPU + server.configuracao.cpuProvisioned;
-        const updatedTotalDisk = state.totalDisk + server.configuracao.totalDiskGB;
-
-        return {
-            selectedServers: updatedServers,
-            totalMemory: updatedTotalMemory,
-            totalCPU: updatedTotalCPU,
-            totalDisk: updatedTotalDisk
-        };
+        updatedSummary.selectedServers = state.selectedServers.concat(server);
+        updatedSummary.totalMemory = state.totalMemory + server.configuracao.memoryProvisioned;
+        updatedSummary.totalCPU = state.totalCPU + server.configuracao.cpuProvisioned;
+        updatedSummary.totalDisk = state.totalDisk + server.configuracao.totalDiskGB;
     }
     if (action.type === "REMOVE") {
         const server = action.payload;
-        const updatedServers = state.selectedServers.filter(
-            (item) => item.id_vm !== action.payload
+        updatedSummary.selectedServers = state.selectedServers.filter(
+            (item) => item.id_vm !== server.id_vm
         );
-        const updatedTotalMemory = state.totalMemory - server.configuracao.memoryProvisioned;
-        const updatedTotalCPU = state.totalCPU - server.configuracao.cpuProvisioned;
-        const updatedTotalDisk = state.totalDisk - server.configuracao.totalDiskGB;
-
-        return {
-            selectedServers: updatedServers,
-            totalMemory: updatedTotalMemory,
-            totalCPU: updatedTotalCPU,
-            totalDisk: updatedTotalDisk
-        };
+        updatedSummary.totalMemory = state.totalMemory - server.configuracao.memoryProvisioned;
+        updatedSummary.totalCPU = state.totalCPU - server.configuracao.cpuProvisioned;
+        updatedSummary.totalDisk = state.totalDisk - server.configuracao.totalDiskGB;
     }
 
-    return initialSummaryState;
+    return updatedSummary;
 };
 
 const SummaryContextProvider = (props) => {
@@ -49,8 +37,8 @@ const SummaryContextProvider = (props) => {
     const addServerHandler = (server) => {
         dispatchSummaryAction({ type: "ADD", payload: server });
     };
-    const removeServerHandler = (id) => {
-        dispatchSummaryAction({ type: "REMOVE", payload: id });
+    const removeServerHandler = (server) => {
+        dispatchSummaryAction({ type: "REMOVE", payload: server });
     };
 
     const summaryContext = {
