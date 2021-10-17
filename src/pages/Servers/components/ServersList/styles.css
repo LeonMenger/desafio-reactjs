@@ -11,6 +11,10 @@
     border-right: 1px solid var(--secondary-dark);
 }
 
+.list-table th:first-child {
+    width: 0;
+}
+
 .list-table th:not(:first-child) {
     cursor: pointer;
 }
@@ -18,4 +22,38 @@
 .list-table th:last-child,
 .list-table td:last-child {
     border-right: none;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.loading {
+    text-align: center;
+}
+
+.loading:after {
+    content: "";
+    animation-name: dots;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: "";
+    }
+    25% {
+        content: ".";
+    }
+    50% {
+        content: "..";
+    }
+    75% {
+        content: "...";
+    }
+    100% {
+        content: "";
+    }
 }
