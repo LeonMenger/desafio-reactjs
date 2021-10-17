@@ -1,15 +1,19 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import ServersPage from "../pages/Servers";
 import { PATHS } from "./paths";
+
+const Home = lazy(() => import("../pages/Home"));
+const ServersPage = lazy(() => import("../pages/Servers"));
 
 const Router = () => {
     return (
         <BrowserRouter>
-            <Switch>
-                <Route path={PATHS.home} component={Home} exact />
-                <Route path={PATHS.servers} component={ServersPage} />
-            </Switch>
+            <Suspense fallback="Loading...">
+                <Switch>
+                    <Route path={PATHS.home} component={Home} exact />
+                    <Route path={PATHS.servers} component={ServersPage} />
+                </Switch>
+            </Suspense>
         </BrowserRouter>
     );
 };
