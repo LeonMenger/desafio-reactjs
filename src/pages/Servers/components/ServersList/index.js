@@ -5,6 +5,7 @@ import useSortableData from "../../../../hooks/useSortableData";
 import ServerItem from "../ServerItem";
 import { PATHS } from "../../../../routes/paths";
 import "./styles.css";
+import Loading from "../../../../components/Loading";
 
 const ServersList = () => {
     const { response, loading, error } = useAxios(PATHS.servers);
@@ -67,11 +68,10 @@ const ServersList = () => {
     );
 
     const errorContent = <p className="error">Ops! Ocorreu um erro.</p>;
-    const loadingContent = <p className="loading">Loading</p>;
 
     return (
         <Card title="Tabela de servidores">
-            {loading ? loadingContent : error ? errorContent : tableContent}
+            {loading ? <Loading /> : error ? errorContent : tableContent}
         </Card>
     );
 };
