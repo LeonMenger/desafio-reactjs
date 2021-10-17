@@ -6,13 +6,17 @@ import "./styles.css";
 const ServersSummary = () => {
     const { selectedServers, totalMemory, totalCPU, totalDisk } = useContext(SummaryContext);
 
+    const selectedServersNumber = selectedServers.length > 0 ? selectedServers.length : "Nenhum";
+    const selectedServersText =
+        selectedServers.length > 1 ? " servidores selecionados" : " servidor selecionado";
+
     return (
         <Card title="Sumário dos recursos dos servidores">
             <table className="summary-table">
                 <tbody>
                     <tr>
                         <td>Servidores Selecionados</td>
-                        <td>{`${selectedServers.length} servidores selecionados`}</td>
+                        <td>{selectedServersNumber + selectedServersText}</td>
                     </tr>
                     <tr>
                         <td>Total de Memória</td>
