@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import Card from "../../../../components/Card";
+import useSortableData from "../../../../hooks/useSortableData";
 import api from "../../../../services/api";
 import ServerItem from "../ServerItem";
 import "./styles.css";
 
 const ServersList = () => {
-    const [servers, setServers] = useState([]);
+    const { sortedData, setSortedData, sortBy } = useSortableData();
 
     useEffect(() => {
         api.get("servers")
             .then(({ data }) => {
-                setServers(data);
+                setSortedData(data);
             })
             .catch((err) => {
                 console.error("Erro: " + err);
@@ -23,15 +24,45 @@ const ServersList = () => {
                 <thead>
                     <tr>
                         <th>Select</th>
-                        <th>Hostname</th>
-                        <th>Memória</th>
-                        <th>vCPUs</th>
-                        <th>Disco</th>
-                        <th>IP</th>
+                        <th
+                            onClick={() => {
+                                sortBy("hostname");
+                            }}
+                        >
+                            Hostname
+                        </th>
+                        <th
+                            onClick={() => {
+                                sortBy("configuracao.memoryProvisioned");
+                            }}
+                        >
+                            Memória
+                        </th>
+                        <th
+                            onClick={() => {
+                                sortBy("configuracao.cpuProvisioned");
+                            }}
+                        >
+                            vCPUs
+                        </th>
+                        <th
+                            onClick={() => {
+                                sortBy("configuracao.totalDiskGB");
+                            }}
+                        >
+                            Disco
+                        </th>
+                        <th
+                            onClick={() => {
+                                sortBy("ip");
+                            }}
+                        >
+                            IP
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {servers?.map((server) => (
+                    {sortedData?.map((server) => (
                         <ServerItem key={server.id_vm} server={server} />
                     ))}
                 </tbody>
